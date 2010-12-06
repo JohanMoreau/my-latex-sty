@@ -26,6 +26,17 @@
 \usepackage{latex/movie15}
 \usepackage{hyperref}
 \usepackage{listings}
+\usepackage{array}
+%\usepackage[table]{xcolor}
+\usepackage{tikz}
+\usepackage{xcolor}
+
+\usepackage{beamerthemesplit}
+\usepackage{tikz}
+\usepackage{tabularx}
+\usepackage{booktabs}
+\usetikzlibrary{calc}
+
 %__________
 %\RequirePackage {epsfig}
 
@@ -180,3 +191,10 @@
     \kern-0.4pt\hrule}%
   \kern-.06em\raise0.4pt\hbox{$\rangle$}}}}
 
+\newcounter{rownum}
+
+\definecolor{lightergray}{gray}{.875}
+\newcommand*\lightergray{\color{lightergray}}
+
+% Title Cell
+\newcommand*\tc{\bf\color{darkred}}
