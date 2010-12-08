@@ -37,6 +37,8 @@
 \usepackage{booktabs}
 \usetikzlibrary{calc}
 
+\usepackage{pgfpages}
+\usepackage{etex}
 %__________
 %\RequirePackage {epsfig}
 
@@ -95,8 +97,11 @@
 %\usetheme{Boadilla} %% Sobre mais pas de sous-titre
 \usetheme{CambridgeUS}
 
-%\begin{document}
-
+\definecolor{darkred}{rgb}{0,0.6,0.6}
+\definecolor{myred}{rgb}{0.9,0.1,0.1}
+\definecolor{lightergray}{gray}{.875}
+\setbeamercolor{structure}{fg=myred} 
+\setbeamertemplate{navigation symbols}{}
 
 \setlength{\locallinewidth}{\linewidth}
 \newcommand{\beamerENV}[2] { \begin{#1} #2 \end{#1} }
@@ -192,8 +197,6 @@
   \kern-.06em\raise0.4pt\hbox{$\rangle$}}}}
 
 \newcounter{rownum}
-
-\definecolor{lightergray}{gray}{.875}
 \newcommand*\lightergray{\color{lightergray}}
 
 % Title Cell
