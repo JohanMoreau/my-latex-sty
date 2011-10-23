@@ -38,9 +38,18 @@
 \usetikzlibrary{calc}
 
 \usepackage{pgfpages}
+%\pgfpagesuselayout{4 on 1}[a4paper,landscape,border shrink=5mm] 
 \usepackage{etex}
 %__________
 %\RequirePackage {epsfig}
+
+\usepackage{wasysym}
+
+\usepackage{calc}
+\usepackage{datapie}
+\definecolor{ircad}{HTML}{FF7000}
+\definecolor{royalpurple}{HTML}{FF00FF} 
+
 
 %\usepackage[pdftex]{graphicx} 
 \usepackage{graphicx} 
@@ -201,3 +210,9 @@
 
 % Title Cell
 \newcommand*\tc{\bf\color{darkred}}
+
+
+\newcommand {\ok} {\textbf{\color{green}$\smiley$ }}
+\newcommand {\ko} {\textbf{\color{magenta}$\frownie$ }}
+\newcommand {\id} {\textbf{\color{blue}$\sun$ }}
+
