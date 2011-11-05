@@ -47,8 +47,8 @@ PDF	= $(ENS:%=%.pdf)
 	tiff2ps $*.tiff > $*.ps
 
 .fig.pdf:
-	fig2dev -L eps $*.fig > $*.ps
-	ps2pdf13 $*.ps
+	fig2dev -L eps $*.fig > $*.eps
+	ps2pdf13 $*.eps $*-eps-converted-to.pdf
 
 .fig.eps:
 	fig2dev -L eps $*.fig > $*.eps
@@ -62,7 +62,7 @@ TEXSTUFF = \
 
 PARTS_110931_SSI = \
 	prez/$(ENS).tex \
- 	cours/$(ENS)20100110.tex \
+ 	cours/$(ENS)20112012.tex \
  	slides/userJMOfr.tex \
  	cours/biblio$(ENS).tex \
 	cours/chap$(ENS)01.tex \
@@ -73,7 +73,8 @@ PARTS_110931_SSI = \
 	cours/chap$(ENS)06.tex \
 	cours/chap$(ENS)07.tex \
 	cours/chap$(ENS)08.tex \
-	cours/chap$(ENS)09.tex
+	cours/chap$(ENS)09.tex \
+	cours/chap$(ENS)10.tex
 
 PARTS_110201_JAVA = \
 	prez/$(ENS).tex \
@@ -97,68 +98,69 @@ PARTS_090930_BlocDeFormation = \
 	prez/$(ENS).tex
 
 FIGS_110931_SSI =	\
-	couts.eps \
-	sophist.eps \
-	troisprinc.eps \
-	demarche.eps \
+	couts.pdf \
+	sophist.pdf \
+	troisprinc.pdf \
+	demarche.pdf \
 	BambooBook-BindingUCR.pdf \
 	\
-	buffov1.eps buffov2.eps bufovpax.eps \
-	unixpass.eps \
+	buffov1.pdf buffov2.pdf bufovpax.pdf \
+	unixpass.pdf \
 	\
-	eth-vamp.eps eth-hub.eps \
-	rj45-tap.eps \
-	fo.eps fo-tap.eps \
-	arp.eps portsteal.eps arp-pois.eps \
-	rlogin.eps x11auth.eps httpauth.eps \
-	tcp-seq.eps tcp-auto.eps \
-	ipspooftcp.eps tcphijack.eps \
-	dnspoison.eps \
-	dos-chargen.eps \
+	eth-vamp.pdf eth-hub.pdf \
+	rj45-tap.pdf \
+	fo.pdf fo-tap.pdf \
+	arp.pdf portsteal.pdf arp-pois.pdf \
+	rlogin.pdf x11auth.pdf httpauth.pdf \
+	tcp-seq.pdf tcp-auto.pdf \
+	ipspooftcp.pdf tcphijack.pdf \
+	dnspoison.pdf \
+	dos-chargen.pdf \
 	\
-	buffov1.eps \
-	buffov2.eps \
-	bufovpax.eps \
-	unixpass.eps \
+	buffov1.pdf \
+	buffov2.pdf \
+	bufovpax.pdf \
+	unixpass.pdf \
 	\
-	eth-vamp.eps \
-	eth-hub.eps \
-	rj45-tap.eps \
-	fo.eps \
-	fo-tap.eps \
-	arp.eps \
-	portsteal.eps \
-	arp-pois.eps \
-	rlogin.eps \
-	x11auth.eps \
-	httpauth.eps \
-	tcp-auto.eps \
-	tcp-seq.eps \
-	ipspooftcp.eps \
-	tcphijack.eps \
-	dnspoison.eps \
-	dos-chargen.eps 
-#	crypt.ps \
-#	algo-vernam.ps algo-rc4.ps \
-#	algo-ecb.ps algo-cbc.ps algo-cfb.ps algo-ofb.ps \
-#	algo-des1.ps algo-des2.ps algo-des3.ps \
-#	algo-idea1.ps algo-idea2.ps \
-#	crypt-kpub.ps \
-#	conf-hybr.ps \
-#	man-middle.ps \
-#	hash.ps algo-md5.ps \
-#	sign-kpub.ps \
-#	mac-sym.ps mac-hash.ps \
-#	sign-dig.ps sign-conf.ps \
-#	vigenere.tiff \
-#	auth-sym.ps auth-kpub.ps \
-#	\
-#	ssh-archi.ps \
-#	ssh-pro0.ps ssh-pro1.ps ssh-pro2.ps ssh-pro3.ps \
-#	ssh-pubkey.ps \
-#	ssh-chan.ps \
-#	ssl-pile.ps ssl-secret.ps \
-#	ssl-pro0.ps ssl-pro1.ps ssl-pro2.ps
+	eth-vamp.pdf \
+	eth-hub.pdf \
+	rj45-tap.pdf \
+	fo.pdf \
+	fo-tap.pdf \
+	arp.pdf \
+	portsteal.pdf \
+	arp-pois.pdf \
+	rlogin.pdf \
+	x11auth.pdf \
+	httpauth.pdf \
+	tcp-auto.pdf \
+	tcp-seq.pdf \
+	ipspooftcp.pdf \
+	tcphijack.pdf \
+	dnspoison.pdf \
+	dos-chargen.pdf \
+	\
+	crypt.pdf \
+	algo-vernam.pdf algo-rc4.pdf \
+	algo-ecb.pdf algo-cbc.pdf algo-cfb.pdf algo-ofb.pdf \
+	algo-des1.pdf algo-des2.pdf algo-des3.pdf \
+	algo-idea1.pdf algo-idea2.pdf \
+	crypt-kpub.pdf \
+	conf-hybr.pdf \
+	man-middle.pdf \
+	hash.pdf algo-md5.pdf \
+	sign-kpub.pdf \
+	mac-sym.pdf mac-hash.pdf \
+	sign-dig.pdf sign-conf.pdf \
+	vigenere.tiff \
+	auth-sym.pdf auth-kpub.pdf \
+	\
+	ssh-archi.pdf \
+	ssh-pro0.pdf ssh-pro1.pdf ssh-pro2.pdf ssh-pro3.pdf \
+	ssh-pubkey.pdf \
+	ssh-chan.pdf \
+	ssl-pile.pdf ssl-secret.pdf \
+	ssl-pro0.pdf ssl-pro1.pdf ssl-pro2.pdf
 
 FIGS_090930_BlocDeFormation = \
 	media/pictures/Bloc_e2.png \
@@ -190,6 +192,8 @@ FIGSMIN = \
 #	$(FIGS_090930_BlocDeFormation)
 #	$(FIGS_100201_JAVA)
 
+figs: $(addprefix media/pictures/,$(FIGSMIN)) 
+
 #all: $(PDF) $(FIGS) $(PARTS) $(TEXSTUFF) $(addprefix tmp/,$(FIGSMIN)) $(addsuffix .tex,$(addprefix prez/,$(ENS)))
 all: $(PDF) $(FIGS) $(PARTS) $(TEXSTUFF) $(addprefix media/pictures/,$(FIGSMIN)) $(addsuffix .tex,$(addprefix prez/,$(ENS)))
 
@@ -198,7 +202,7 @@ tmp/%.png: %.png
 	ebb $<
 
 %.pdf: prez/%.tex
-	# Pour les cours change SSI avec des fig/eps il faut passer par pdflatex
+	# Pour les cours genre SSI avec des fig/eps il faut passer par pdflatex
 	pdflatex -shell-escape $<
 #	latexmk --pdf $<
 
