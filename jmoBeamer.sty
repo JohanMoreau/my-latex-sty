@@ -52,8 +52,15 @@
 \usepackage{calc}
 \usepackage{datapie}
 \definecolor{ircad}{HTML}{FF7000}
-\definecolor{royalpurple}{HTML}{FF00FF} 
-
+\definecolor{royalpurple}{HTML}{FF00FF}
+\definecolor{Purple}{HTML}{800080}
+\definecolor{Goldenrod}{HTML}{DAA520}
+\definecolor{LimeGreen}{HTML}{32CD32}
+\definecolor{GreenYellow}{HTML}{BFFF00}
+\definecolor{Aquamarine}{HTML}{7FFFD0}
+\definecolor{Aqua}{HTML}{00FFFF}
+\definecolor{Blue}{HTML}{0000FF}
+\definecolor{SteelBlue}{HTML}{4682B4}
 
 %\usepackage[pdftex]{graphicx} 
 \usepackage{graphicx} 
@@ -141,54 +148,54 @@
 \newcommand {\fig} [2]
 {
     \begin {figure} [htbp]
-	\hrule
-	\vspace {3mm}
-	\center {\input {#1}}
-	\vspace {2mm}
-	\caption {#2}
-	\vspace {3mm}
-	\hrule
-	\label {fig:#1}
+    \hrule
+    \vspace {3mm}
+    \center {\input {#1}}
+    \vspace {2mm}
+    \caption {#2}
+    \vspace {3mm}
+    \hrule
+    \label {fig:#1}
     \end {figure}
 }
 \newcommand {\figps} [1] {
     \begin {center}
-	\epsfig {figure=#1.ps}
+    \epsfig {figure=#1.ps}
     \end {center}
 }
 \newcommand {\figpsheight} [2] {
     \begin {center}
-	\epsfig {figure=#1.ps,height=#2}
+    \epsfig {figure=#1.ps,height=#2}
     \end {center}
 }
 \newcommand {\figpswidth} [2] {
     \begin {center}
-	\epsfig {figure=#1.ps,width=#2}
+    \epsfig {figure=#1.ps,width=#2}
     \end {center}
 }
 \newcommand {\figeps} [1] {
     \begin {center}
-	\epsfig {figure=#1.eps}
+    \epsfig {figure=#1.eps}
     \end {center}
 }
 \newcommand {\figepsheight} [2] {
     \begin {center}
-	\epsfig {figure=#1.eps,height=#2}
+    \epsfig {figure=#1.eps,height=#2}
     \end {center}
 }
 \newcommand {\figepswidth} [2] {
     \begin {center}
-	\epsfig {figure=#1.eps,width=#2}
+    \epsfig {figure=#1.eps,width=#2}
     \end {center}
 }
 \newcommand {\figpdfwidth} [2] {
     \begin {center}
-	\includegraphics <1> [width=#2] {#1.pdf}
+    \includegraphics <1> [width=#2] {#1.pdf}
     \end {center}
 }
 \newcommand {\figpngwidth} [2] {
     \begin {center}
-	\includegraphics <1> [width=#2] {#1.png}
+    \includegraphics <1> [width=#2] {#1.png}
     \end {center}
 }
 
@@ -238,3 +245,55 @@
       \end{multicols}%
       }{}%
    }
+
+
+
+\usepackage{listings}
+%\usepackage{courier}
+\lstset{
+         language=Java,
+         basicstyle=\scriptsize,
+         %numbers=left,
+         numberstyle=\scriptsize,
+         %stepnumber=2,
+         numbersep=5pt,
+         tabsize=2,
+         extendedchars=true,
+         breaklines=true,
+         keywordstyle=\color{red},
+         frame=b,
+ %        keywordstyle=[1]\textbf,
+ %        keywordstyle=[2]\textbf,
+ %        keywordstyle=[3]\textbf,
+ %        keywordstyle=[4]\textbf,   \sqrt{\sqrt{}} %
+         %keywordstyle=\color[rgb]{0,0,1},
+         %commentstyle=\color[rgb]{0.133,0.545,0.133},
+         %stringstyle=\color[rgb]{0.627,0.126,0.941},
+         stringstyle=\color{blue}\scriptsize,
+         showspaces=false,
+         showtabs=false,
+         xleftmargin=7pt,
+         framexleftmargin=7pt,
+         framexrightmargin=2pt,
+         framexbottommargin=2pt,
+         %backgroundcolor=\color{lightgray},
+         showstringspaces=false,
+         columns=flexible
+}
+
+\lstloadlanguages{
+         %[Visual]Basic
+         %Pascal
+         %C
+         %C++
+         %XML
+         %HTML
+         Java
+}
+
+%\DeclareCaptionFont{blue}{\color{blue}} 
+%\captionsetup[lstlisting]{singlelinecheck=false, labelfont={blue}, textfont={blue}}
+\usepackage{caption}
+\DeclareCaptionFont{white}{\color{white}}
+\DeclareCaptionFormat{listing}{\colorbox[cmyk]{0.43, 0.35, 0.35,0.01}{\parbox{\textwidth}{\hspace{12pt}#1#2#3}}}
+\captionsetup[lstlisting]{format=listing,labelfont=white,textfont=white, singlelinecheck=false, margin=0pt, font={bf,footnotesize}}

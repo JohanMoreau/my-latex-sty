@@ -14,7 +14,8 @@ MPAGE2 = mpage -2 -a <
 MPAGE4 = psnup -pa4 -r -c -4 -d <
 #MPAGE4 = psnup -pa4 -r -4 -d <
 ENS = \
-	110931_SSI
+	120104_JAVA
+	#110931_SSI
 	#110201_JAVA \
 	#090916_Hosting \
 	#090930_BlocDeFormation \
@@ -47,8 +48,11 @@ PDF	= $(ENS:%=%.pdf)
 	tiff2ps $*.tiff > $*.ps
 
 .fig.pdf:
-	fig2dev -L eps $*.fig > $*.eps
-	ps2pdf13 $*.eps $*-eps-converted-to.pdf
+	# After 2009
+	fig2dev -L pdf $*.fig > $*-eps-converted-to.pdf
+	# Before 2009
+	#fig2dev -L eps $*.fig > $*.eps
+	#ps2pdf13 $*.eps $*-eps-converted-to.pdf
 
 .fig.eps:
 	fig2dev -L eps $*.fig > $*.eps
@@ -76,6 +80,19 @@ PARTS_110931_SSI = \
 	cours/chap$(ENS)09.tex \
 	cours/chap$(ENS)10.tex
 
+PARTS_120104_JAVA = \
+	prez/$(ENS).tex \
+ 	cours/$(ENS)20120104.tex \
+ 	slides/userJMOfr.tex \
+ 	cours/biblio$(ENS).tex \
+ 	cours/chap$(ENS)01.tex \
+ 	cours/chap$(ENS)02.tex \
+ 	cours/chap$(ENS)03.tex \
+ 	cours/chap$(ENS)04.tex \
+ 	cours/chap$(ENS)05.tex \
+ 	cours/chap$(ENS)06.tex \
+ 	cours/chap$(ENS)07.tex 
+
 PARTS_110201_JAVA = \
 	prez/$(ENS).tex \
  	cours/$(ENS)20100110.tex \
@@ -97,12 +114,12 @@ PARTS_110201_JAVA = \
 PARTS_090930_BlocDeFormation = \
 	prez/$(ENS).tex
 
+#BambooBook-BindingUCR.ps
 FIGS_110931_SSI =	\
 	couts.pdf \
 	sophist.pdf \
 	troisprinc.pdf \
 	demarche.pdf \
-	BambooBook-BindingUCR.pdf \
 	\
 	buffov1.pdf buffov2.pdf bufovpax.pdf \
 	unixpass.pdf \
@@ -177,8 +194,8 @@ FIGS_090930_BlocDeFormation = \
 	media/pictures/Bloc12.png
 
 FIGS_110201_JAVA = \
-	media/pictures/FiftyYearsOfProgressInSoftwareEngineering1.eps \
-	media/pictures/FiftyYearsOfProgressInSoftwareEngineering2.eps
+	media/pictures/FiftyYearsOfProgressInSoftwareEngineering1.pdf \
+	media/pictures/FiftyYearsOfProgressInSoftwareEngineering2.pdf
 
 FIGS_100927_ENVOL = \
 	media/pictures/logoCC.png
@@ -188,14 +205,18 @@ PARTS =	$(PARTS_$((ENS))
 FIGS =	$(FIGS_$((ENS))
 
 FIGSMIN = \
-	$(FIGS_110931_SSI)
+	$(FIGS_100201_JAVA)
+#	$(FIGS_110931_SSI) \
 #	$(FIGS_090930_BlocDeFormation)
-#	$(FIGS_100201_JAVA)
 
 figs: $(addprefix media/pictures/,$(FIGSMIN)) 
 
 #all: $(PDF) $(FIGS) $(PARTS) $(TEXSTUFF) $(addprefix tmp/,$(FIGSMIN)) $(addsuffix .tex,$(addprefix prez/,$(ENS)))
 all: $(PDF) $(FIGS) $(PARTS) $(TEXSTUFF) $(addprefix media/pictures/,$(FIGSMIN)) $(addsuffix .tex,$(addprefix prez/,$(ENS)))
+
+tmp/movies/thumbails/%.jpg: %.mp4
+	#for i in *; do ffmpeg -i $i -y -ss 8 -t 1/30 -an -sameq -f image2 -r 1/30 ../../tmp/media/thumbails/$i-%03d.jpg; done;
+	ffmpeg -i $< -y -ss 8 -t 1/30 -an -sameq -f image2 -r 1/30 $@-%03d.jpg
 
 tmp/%.png: %.png
 	convert -scale 10% $< $@
