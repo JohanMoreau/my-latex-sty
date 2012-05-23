@@ -52,7 +52,9 @@ PDF	= $(ENS:%=%.pdf)
 	fig2dev -L pdf $*.fig > $*-eps-converted-to.pdf
 	# Before 2009
 	#fig2dev -L eps $*.fig > $*.eps
-	#ps2pdf13 $*.eps $*-eps-converted-to.pdf
+
+.eps.pdf:
+	ps2pdf13 $*.eps $*-eps-converted-to.pdf
 
 .fig.eps:
 	fig2dev -L eps $*.fig > $*.eps
@@ -194,8 +196,8 @@ FIGS_090930_BlocDeFormation = \
 	media/pictures/Bloc12.png
 
 FIGS_110201_JAVA = \
-	media/pictures/FiftyYearsOfProgressInSoftwareEngineering1.pdf \
-	media/pictures/FiftyYearsOfProgressInSoftwareEngineering2.pdf
+	FiftyYearsOfProgressInSoftwareEngineering1-eps-converted-to.pdf \
+	FiftyYearsOfProgressInSoftwareEngineering2-eps-converted-to.pdf
 
 FIGS_100927_ENVOL = \
 	media/pictures/logoCC.png
@@ -205,9 +207,9 @@ PARTS =	$(PARTS_$((ENS))
 FIGS =	$(FIGS_$((ENS))
 
 FIGSMIN = \
-	$(FIGS_100201_JAVA)
-#	$(FIGS_110931_SSI) \
-#	$(FIGS_090930_BlocDeFormation)
+	$(FIGS_110201_JAVA) \
+	$(FIGS_110931_SSI)
+	#$(FIGS_090930_BlocDeFormation)
 
 figs: $(addprefix media/pictures/,$(FIGSMIN)) 
 
