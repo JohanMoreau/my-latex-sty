@@ -62,6 +62,14 @@
 \definecolor{Blue}{HTML}{0000FF}
 \definecolor{SteelBlue}{HTML}{4682B4}
 
+\definecolor{lightsteelblue}{rgb}{0.69,0.77,0.87}
+\definecolor{lightblue}{rgb}{0.68,0.85,0.9}
+\definecolor{powderblue}{rgb}{0.69,0.88,0.9}
+\definecolor{paleturquoise}{rgb}{0.69,0.93,0.93}
+\definecolor{darkturquoise}{rgb}{0,0.81,0.82}
+\definecolor{mediumturquoise}{rgb}{0.28,0.82,0.8}
+
+
 %\usepackage[pdftex]{graphicx} 
 \usepackage{graphicx} 
 \usepackage{epstopdf} 
@@ -122,6 +130,20 @@
 \definecolor{lightergray}{gray}{.875}
 \setbeamercolor{structure}{fg=myred} 
 \setbeamertemplate{navigation symbols}{}
+
+%\setbeamertemplate{footline}{%
+%\hbox{%
+%\begin{beamercolorbox}[wd=.70\paperwidth,ht=4.25ex,dp=3ex,left,leftskip=2ex]{title in head/foot}%
+%    \usebeamerfont{title in head/foot}\insertshorttitle{} - \insertshortauthor
+%\end{beamercolorbox}%
+%\begin{beamercolorbox}[wd=.20\paperwidth,ht=4.25ex,dp=3ex,center]{date in head/foot}%
+%    \usebeamerfont{date in head/foot}\insertshortdate{}
+%\end{beamercolorbox}%
+%\begin{beamercolorbox}[wd=.10\paperwidth,ht=4.25ex,dp=3ex,right,rightskip=2ex]{date in head/foot}%
+%    \insertframenumber{} / \inserttotalframenumber
+%\end{beamercolorbox}}%
+%}
+
 
 \setlength{\locallinewidth}{\linewidth}
 \newcommand{\beamerENV}[2] { \begin{#1} #2 \end{#1} }
@@ -300,4 +322,9 @@
 
 \usepackage{ifthen}
 \newboolean{yourBoolVar}
+
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd{\@makefntext}{\insertfootnotetext{#1}}{\insertfootnotetext{\tiny#1}}{}{}
+\makeatother
 
