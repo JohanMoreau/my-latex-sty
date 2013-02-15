@@ -23,7 +23,8 @@
 \usepackage{color}
 \usepackage{multirow}
 \usepackage{ifthen}
-\usepackage{latex/movie15}
+%\usepackage{media9}
+\usepackage{movie15}
 \usepackage{hyperref}
 \usepackage{listings}
 \usepackage{array}
@@ -35,11 +36,13 @@
 \usepackage{tikz}
 \usepackage{tabularx}
 \usepackage{booktabs}
-\usetikzlibrary{calc}
+%\usetikzlibrary{calc}
+\usepackage{rotating}
 
-\usepackage{pgfpages}
+%\usepackage{pgfpages}
 %\pgfpagesuselayout{4 on 1}[a4paper,landscape,border shrink=5mm] 
 \usepackage{etex}
+\usepackage{ulem}
 %__________
 %\RequirePackage {epsfig}
 
@@ -49,8 +52,9 @@
 \RequirePackage{ifthen}
 \RequirePackage{multitoc}
 
-\usepackage{calc}
+%\usepackage{calc}
 \usepackage{datapie}
+\usepackage{pgfplots}
 \definecolor{ircad}{HTML}{FF7000}
 \definecolor{royalpurple}{HTML}{FF00FF}
 \definecolor{Purple}{HTML}{800080}
@@ -248,6 +252,7 @@
 \newcommand {\ok} {\textbf{\color{green}$\smiley$ }}
 \newcommand {\ko} {\textbf{\color{magenta}$\frownie$ }}
 \newcommand {\id} {\textbf{\color{blue}$\sun$ }}
+\newcommand {\todo}{\begin{center}\textbf{\color{magenta}\Huge{TODO}}\end{center}}
 
 \let\@multitoc@starttoc\@starttoc
 \renewcommand*{\@starttoc}[1]{%
@@ -268,10 +273,9 @@
       }{}%
    }
 
-
-
 \usepackage{listings}
 %\usepackage{courier}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \lstset{
          language=Java,
          basicstyle=\scriptsize,
@@ -312,6 +316,22 @@
          %HTML
          Java
 }
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{setspace}
+\renewcommand{\lstlistlistingname}{Code Listings}
+\renewcommand{\lstlistingname}{Code Listing}
+\lstnewenvironment{bashenv}[1][]{
+\lstset{
+language=bash,
+basicstyle=\ttfamily\scriptsize\setstretch{1},
+stringstyle=\color{green},
+showstringspaces=false,
+keywordstyle=\color{blue},
+upquote=true,
+commentstyle=\color{red}\slshape,
+numberstyle=\scriptsize
+}}{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %\DeclareCaptionFont{blue}{\color{blue}} 
 %\captionsetup[lstlisting]{singlelinecheck=false, labelfont={blue}, textfont={blue}}
@@ -328,3 +348,41 @@
 \patchcmd{\@makefntext}{\insertfootnotetext{#1}}{\insertfootnotetext{\tiny#1}}{}{}
 \makeatother
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\tikzstyle{every picture}+=[remember picture]
+\tikzstyle{na} = [baseline=-.5ex]
+
+\usetikzlibrary{arrows,shapes,positioning}
+\tikzset{
+  tag/.style={
+    rectangle,
+    draw=black, very thick,
+    text width=4em,
+    minimum height=2em,
+    text centered},
+  commit/.style={
+    circle,
+    draw=black, very thick,
+    text width=1em,
+    minimum height=1em,
+    text centered},
+  point/.style={coordinate},
+}
+
+
+\newcommand{\hggit}[2]{
+\begin{tabularx}{\linewidth}{ccc}
+        \begin{minipage}{0.42\linewidth}
+            \begin{bashenv}
+                #1
+	        \end{bashenv} 
+	    \end{minipage}
+	     & OU &
+	    \begin{minipage}{0.45\linewidth}
+	        \begin{bashenv}
+	            #2
+	        \end{bashenv}
+	    \end{minipage}  \\
+    \end{tabularx}
+}

@@ -51,7 +51,7 @@ PDF	= $(ENS:%=%.pdf)
 	# After 2009
 	fig2dev -L pdf $*.fig > $*-eps-converted-to.pdf
 	# Before 2009
-	#fig2dev -L eps $*.fig > $*.eps
+	fig2dev -L eps $*.fig > $*.eps
 
 .eps.pdf:
 	ps2pdf13 $*.eps $*-eps-converted-to.pdf
@@ -207,8 +207,8 @@ PARTS =	$(PARTS_$((ENS))
 FIGS =	$(FIGS_$((ENS))
 
 FIGSMIN = \
-	$(FIGS_110201_JAVA) \
 	$(FIGS_110931_SSI)
+	#$(FIGS_110201_JAVA)
 	#$(FIGS_090930_BlocDeFormation)
 
 figs: $(addprefix media/pictures/,$(FIGSMIN)) 
