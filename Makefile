@@ -244,4 +244,4 @@ tmp/%.png: %.png
 
 clean:
 #	cleantex -a $(ENS)
-	rm -f *.aux *.ps $(GENERES) *.bak *.dvi *.aux *.log *.nav *.out *.snm *.toc *.pdf *.eps *.fdb_latexmk *.vrb
+	rm -f *.aux *.ps $(GENERES) *.bak *.dvi *.aux *.log *.nav *.out *.snm *.toc *.pdf *.eps *.fdb_latexmk *.vrb *.fls
